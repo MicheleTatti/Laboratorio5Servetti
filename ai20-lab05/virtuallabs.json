@@ -1,0 +1,59 @@
+{
+  "students": [
+    {
+      "id": "265607",
+      "name": "Tatti",
+      "firstName": "Michele",
+      "courseId": 1,
+      "groupId": 0
+    },
+    {
+      "id": "258692",
+      "name": "Stark",
+      "firstName": "Tony",
+      "courseId": 1,
+      "groupId": 0
+    },
+    {
+      "id": "269854",
+      "name": "Scott",
+      "firstName": "Lang",
+      "courseId": 0,
+      "groupId": 0
+    },
+    {
+      "id": "289600",
+      "name": "Parker",
+      "firstName": "Peter",
+      "courseId": 1,
+      "groupId": 0
+    },
+    {
+      "id": "278954",
+      "name": "Kent",
+      "firstName": "Clark",
+      "courseId": 1,
+      "groupId": 0
+    },
+    {
+      "id": "261500",
+      "name": "Wayne",
+      "firstName": "Bruce",
+      "courseId": 0,
+      "groupId": 0
+    }
+  ],
+  "users": [
+    {
+      "email": "olivier@mail.com",
+      "password": "$2a$10$9SFIVF0tDrwRoUlZOo9Q0urEs0cnpBXu9RWGf/TxuHjFzDteQhvDW",
+      "id": 1
+    }
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "name": "Calvary"
+    }
+  ]
+}

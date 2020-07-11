@@ -1,0 +1,64 @@
+<h3 style="padding-left: 15px;">Elenco studenti iscritti al corso</h3>
+          <mat-form-field class="myform">
+            <mat-label>Add student</mat-label>
+            <input type="text" 
+            placeholder="Nome degli studenti" 
+            (keyup)="myFilter($event)"
+            matInput 
+            [formControl]="myControl"
+            [matAutocomplete]="auto" 
+            >
+
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn"
+              (optionSelected)="retrieveStudent($event.option.value)">
+              <mat-option *ngFor="let student of filteredStudents" [value]="student">
+                {{student.firstName}} {{student.name}} ({{student.id}})
+              </mat-option>
+            </mat-autocomplete>
+
+          </mat-form-field>
+          <button mat-raised-button (click)="add()"> Add</button>
+          <div class="mybutton">
+            <button mat-raised-button (click)="deleteStudents($event)">
+              Delete selected
+            </button>
+          </div>
+          <div class="container">
+            <table mat-table [dataSource]="dataSource" matSort>
+
+              <ng-container matColumnDef="select">
+                <th mat-header-cell *matHeaderCellDef>
+                  <mat-checkbox (change)="$event ? masterToggle() : null"
+                    [checked]="selection.hasValue() && isAllSelected()"
+                    [indeterminate]="selection.hasValue() && !isAllSelected()"></mat-checkbox>
+                </th>
+                <td mat-cell *matCellDef="let row">
+                  <mat-checkbox (change)="toggleForCheckbox(row)" [checked]="selection.isSelected(row)">
+                  </mat-checkbox>
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+                <td mat-cell *matCellDef="let user"> s{{user.id}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+                <td mat-cell *matCellDef="let user"> {{user.name}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="firstName">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Firstname </th>
+                <td mat-cell *matCellDef="let user"> {{user.firstName}} </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let myRowData; columns: displayedColumns"></tr>
+
+
+            </table>
+
+            <mat-paginator [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons>
+            </mat-paginator>
+          </div>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VirtualLabs</title>
+</head>
+
+<body>
+
+  <mat-toolbar style="background-color:#3f51b5; color:white">
+    <mat-icon aria-hidden="false" (click)="toggleForMenuClick($event)">menu</mat-icon>
+    <span><a mat-button routerLink='/home' routerLinkActive="active"> VirtualLabs </a></span>
+    <span class="example-fill-remaining-space"></span>
+    <span *ngIf="loggedIn; else elseBlock">
+      <span><button mat-stroked-button (click)="logout()">logout</button></span> 
+    </span>
+    <ng-template #elseBlock>
+      <span><button mat-stroked-button routerLink="/home" [queryParams]="{doLogin :true}" >login</button></span>
+    </ng-template>
+  </mat-toolbar>
+  
+  <mat-toolbar>{{course}}</mat-toolbar>
+ 
+
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav mode="side" opened="opened" position="start">
+      <div class="container">
+        <mat-nav-list>
+          <mat-list-item>
+           <a routerLink='courses/teacher/course/applicazioni-internet/students' routerLinkActive="active">Applicazioni Internet</a> 
+          </mat-list-item>
+        </mat-nav-list>
+      </div>
+    </mat-sidenav>
+    
+    
+    <mat-sidenav-content>
+      <nav mat-tab-nav-bar>
+        <a mat-tab-link  label="Studenti"  
+          routerLink='courses/teacher/course/applicazioni-internet/students'
+          routerLinkActive="active"> Studenti
+      </a>
+        <a mat-tab-link label="Vms" 
+        routerLink='courses/teacher/course/applicazioni-internet/vms'
+        routerLinkActive="active"> VMs
+        </a>
+      </nav>
+        <router-outlet></router-outlet>
+        
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+</body>
+
+</html>
